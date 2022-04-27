@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
 
+const BASIC_ACCOUNT = 'basic';
+const PRO_ACCOUNT = 'pro';
+
 const usersSchema = mongoose.Schema({
   email: {
     type: String,
@@ -14,8 +17,9 @@ const usersSchema = mongoose.Schema({
   firstName: String,
   lastName: String,
   accountType: {
-    type: String,
-    required: true
+    type: [BASIC_ACCOUNT, PRO_ACCOUNT],
+    required: true,
+    lowercase: true
   }
 }, { collections: 'users'});
 
