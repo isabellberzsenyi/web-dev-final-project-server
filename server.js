@@ -3,8 +3,9 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import session from 'express-session';
 import userController from './controllers/users-controller.js';
+import likesController from './controllers/likes-controller.js';
 
-const LOCAL_DB_URI = 'mongodb://localhost:27017/webdev'
+const LOCAL_DB_URI = 'mongodb://localhost:27017/finalwebdev'
 
 mongoose.connect(LOCAL_DB_URI);
 
@@ -27,5 +28,6 @@ app.use(session(sess));
 
 app.use(express.json());
 userController(app);
+likesController(app);
 app.get('/', (req, res) => {res.send('Hello!')});
 app.listen(4000);
