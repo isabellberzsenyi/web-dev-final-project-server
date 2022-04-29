@@ -13,21 +13,21 @@ const toggleLike = async (req, res) => {
 };
 
 const findUserLikes = async (req, res) => {
-  const userId = req.body.userId;
+  const userId = req.params.userId;
   const likes = await likesDao.findUserLikes(userId);
   res.json(likes);
 };
 
 const findMealLikes = async (req, res) => {
-  const mealId = req.body.mealId;
+  const mealId = req.params.mealId;
   const likes = await likesDao.findMealLikes(mealId);
   res.json(likes);
 }
 
 const likesController = (app) => {
   app.post('/api/likes/like', toggleLike);
-  app.get('/api/likes/userLikes', findUserLikes);
-  app.get('/api/likes/mealLikes', findMealLikes);
+  app.get('/api/likes/userLikes/:userId', findUserLikes);
+  app.get('/api/likes/mealLikes/:mealId', findMealLikes);
 };
 
 export default likesController;
