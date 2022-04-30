@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import session from 'express-session';
 import userController from './controllers/users-controller.js';
 import likesController from './controllers/likes-controller.js';
+import commentsController from "./controllers/comments-controller.js";
 
 const LOCAL_DB_URI = 'mongodb://localhost:27017/finalwebdev'
 
@@ -29,5 +30,6 @@ app.use(session(sess));
 app.use(express.json());
 userController(app);
 likesController(app);
+commentsController(app);
 app.get('/', (req, res) => {res.send('Hello!')});
 app.listen(4000);

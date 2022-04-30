@@ -1,4 +1,3 @@
-
 import likesModel from "./likes-model.js";
 
 export const findLike = (mealId, userId) => {
@@ -19,9 +18,9 @@ export const deleteLike = (mealId, userId) => {
 };
 
 export const findUserLikes = (userId) => {
-  return likesModel.find({userId});
+  return likesModel.find({ userId });
 };
 
 export const findMealLikes = (mealId) => {
-  return likesModel.find({mealId});
+  return likesModel.find({ mealId });
 }
