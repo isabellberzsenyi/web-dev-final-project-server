@@ -40,9 +40,10 @@ const signout = (req, res) => {
 const updateUser = async (req, res) => {
   const userToUpdate = req.params.userId;
   const updatedUser = req.body;
-  const status = await usersDao.updateUser(userToUpdate, updatedUser);
-  res.send(status);
-
+  await usersDao.updateUser(userToUpdate, updatedUser);
+  const existingUser = await usersDao.findUserById(userToUpdate);
+  req.session['currentUser'] = existingUser;
+  return res.send(existingUser);
 }
 
 const userController = (app) => {
