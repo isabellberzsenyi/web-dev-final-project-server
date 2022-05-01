@@ -52,6 +52,7 @@ const userController = (app) => {
   app.post('/api/users/signout', signout)
   app.get('/api/users/profile', profile)
   app.put('/api/users/profile/:userId', updateUser)
+  app.get('/api/users/findUser', findUserById)
 }
 
 export default userController;

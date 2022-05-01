@@ -6,9 +6,9 @@ import userController from './controllers/users-controller.js';
 import likesController from './controllers/likes-controller.js';
 import commentsController from "./controllers/comments-controller.js";
 
-const LOCAL_DB_URI = 'mongodb://localhost:27017/finalwebdev'
+const DB_CONNECTION_STRING = 'mongodb+srv://webdev:finalproject@cluster0.f1vq1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
-mongoose.connect(LOCAL_DB_URI);
+mongoose.connect(DB_CONNECTION_STRING);
 
 const app = express();
 
@@ -32,4 +32,4 @@ userController(app);
 likesController(app);
 commentsController(app);
 app.get('/', (req, res) => {res.send('Hello!')});
-app.listen(4000);
+app.listen(process.env.PORT || 4000);
