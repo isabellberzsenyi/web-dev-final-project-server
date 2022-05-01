@@ -37,11 +37,20 @@ const signout = (req, res) => {
   res.sendStatus(200)
 }
 
+const updateUser = async (req, res) => {
+  const userToUpdate = req.params.userId;
+  const updatedUser = req.body;
+  const status = await usersDao.updateUser(userToUpdate, updatedUser);
+  res.send(status);
+
+}
+
 const userController = (app) => {
   app.post('/api/users/signup', signup)
   app.post('/api/users/signin', signin)
   app.post('/api/users/signout', signout)
   app.get('/api/users/profile', profile)
+  app.put('/api/users/profile/:userId', updateUser)
 }
 
 export default userController;
