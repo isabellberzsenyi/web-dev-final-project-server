@@ -19,8 +19,6 @@ const findMealComments = async (req, res) => {
   comments = await Promise.all(comments.map( async (c) => {
     const user = await usersDao.findUserById(c.userId);
     if (user) {
-      console.log({c});
-      console.log({user});
       return {
         _id: c._id,
         comment: c.comment,
