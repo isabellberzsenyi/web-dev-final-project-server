@@ -46,13 +46,19 @@ const updateUser = async (req, res) => {
   return res.send(existingUser);
 }
 
+  const findUserById = async (req, res) => {
+  const userId = req.params.uid;
+  const actualUser = await usersDao.findUserById(userId);
+  res.json(actualUser);
+}
+
 const userController = (app) => {
   app.post('/api/users/signup', signup)
   app.post('/api/users/signin', signin)
   app.post('/api/users/signout', signout)
   app.get('/api/users/profile', profile)
   app.put('/api/users/profile/:userId', updateUser)
-  app.get('/api/users/findUser', findUserById)
+  app.get('/api/users/findUser/:uId', findUserById)
 }
 
 export default userController;
